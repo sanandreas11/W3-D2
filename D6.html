@@ -63,7 +63,11 @@
 
     <div>
       <p>Anche questo testo è per gli esercizi</p>
-      <h2 id="changeMyColor" style="color: #ff00d6">
+      <h2
+        id="changeMyColor"
+        style="color: #ff00d6"
+        onclick="changeColorWithRandom()"
+      >
         Apri questa pagina con VSCode per scoprire gli esercizi
       </h2>
     </div>
@@ -94,7 +98,7 @@
       */
 
       const addClassToTitle = function () {
-        document.querySelector("div h1").classList.add("myHeading")
+        document.getElementsByTagName("h1")[0].classList.add("myHeading")
       }
       addClassToTitle()
       /* ESERCIZIO 3
@@ -137,7 +141,7 @@
       */
 
       const addParagraph = function () {
-        const paragraph1Div = document.querySelector("div")
+        const paragraph1Div = document.getElementsByTagName("div")[0]
         const p = document.createElement("p")
         p.innerText = "lorem ipsum"
         paragraph1Div.appendChild(p)
@@ -150,6 +154,9 @@
       const hideFirstUl = function () {
         const firstList = document.getElementById("firstList")
         firstList.remove()
+        // firstList.style.display = 'none'
+        // firstList.style.visibility = 'none'
+        // firstList.style.opacity = 0
       }
       hideFirstUl()
       /* ESERCIZIO 8
@@ -160,12 +167,6 @@
         lists.style.backgroundColor = "green"
       }
       paintItGreen()
-
-      // const paintItGreen = function () {
-      //   const lists = document.getElementsByTagName("ul")
-      //   lists.style.backgroundColor = "green"
-      // }
-      // paintItGreen
 
       /* ESERCIZIO 9
          Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
@@ -193,17 +194,57 @@
       */
 
       const generateTable = function () {
-        const div = document.getElementById("tableArea")
-        const table = document.createElement("table")
-        table.style.width = "100px"
-        table.style.border = "1px solid black"
+        const tableContainer = document.getElementById("tableArea")
+        tableContainer.innerHTML = `
+    <table>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+        <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+        <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+        <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+        <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      `
       }
       generateTable()
       /* ESERCIZIO 12
          Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
       */
 
-      const addRow = function () {}
+      const addRow = function () {
+        const newRow = document.createElement("tr")
+        newRow.innerHTML = `
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        `
+        const table = document.querySelector(newRow)
+        table.appendChild(newRow)
+      }
 
       /* ESERCIZIO 14
         Crea una funzione che nasconda le immagini della tabella quando eseguita
@@ -215,7 +256,24 @@
         Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
       */
 
-      const changeColorWithRandom = function () {}
+      const changeColorWithRandom = function () {
+        // const changeColorWithRandom = function () {
+        //   const colorChanger = document.getElementById("changeMyColor")
+        //   let randomColor =
+        //     "#" + Math.floor(Math.random() * 16777215).toString(16)
+        //   colorChanger.style.color = randomColor
+        // }
+        const colorChanger = document.getElementById("changeMyColor")
+        // let randomColor =
+        //   '#' + Math.floor(Math.random() * 16777215).toString(16)
+        // colorChanger.style.color = randomColor
+        const randomColor = `rgb(${Math.floor(
+          Math.random() * 256
+        )}, ${Math.floor(Math.random() * 256)}, ${Math.floor(
+          Math.random() * 256
+        )})`
+        colorChanger.style.color = randomColor
+      }
     </script>
   </body>
 </html>

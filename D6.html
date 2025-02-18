@@ -35,7 +35,7 @@
 
   <body>
     <div>
-      <h1>Questo è il titolo della pagina</h1>
+      <h1 onclick="makeItClickable()">Questo è il titolo della pagina</h1>
       <h2>Questo è il sottotitolo della pagina</h2>
     </div>
 
@@ -70,7 +70,7 @@
 
     <div id="tableArea"></div>
 
-    <footer>
+    <footer onclick="revealFooterLink()">
       <h3>
         DOM Manipulation is super
         <a
@@ -171,21 +171,34 @@
          Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
         */
 
-      const makeItClickable = function () {}
+      const makeItClickable = function () {
+        const h1 = document.querySelector("h1")
+        h1.innerText.slice(0, -1)
+      }
 
       /* ESERCIZIO 10
          Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
         */
 
-      const revealFooterLink = function () {}
+      const revealFooterLink = function () {
+        const footer = document.getElementsByTagName("footer")
+        alert(
+          "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents"
+        )
+      }
 
       /* ESERCIZIO 11
          Crea una funzione che crei una tabella nell'elemento con id "tableArea".
          La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
       */
 
-      const generateTable = function () {}
-
+      const generateTable = function () {
+        const div = document.getElementById("tableArea")
+        const table = document.createElement("table")
+        table.style.width = "100px"
+        table.style.border = "1px solid black"
+      }
+      generateTable()
       /* ESERCIZIO 12
          Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
       */
